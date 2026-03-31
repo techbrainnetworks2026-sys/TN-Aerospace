@@ -1,0 +1,153 @@
+/* ===================== CAREERS PAGE ===================== */
+.careers-bg {
+  background: linear-gradient(135deg, #0a1428 0%, #1a2332 50%, #0d47a1 100%);
+  padding: 80px 20px;
+  min-height: 100vh;
+}
+
+.careers-bg .sec-head .eyebrow,
+.careers-bg .sec-head h2,
+.careers-bg .sec-head p {
+  color: white;
+}
+
+.careers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 50px;
+}
+
+.career-card {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border: 1px solid rgba(13, 71, 161, 0.1);
+  border-radius: 16px;
+  padding: 28px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.career-card:hover {
+  border-color: rgba(13, 71, 161, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(13, 71, 161, 0.2);
+}
+
+.career-title-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.title-badge {
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #0d47a1 0%, #1565c0 100%);
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.career-title-section h3 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #0d47a1 0%, #1565c0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: #0d47a1;
+}
+
+.skills-label {
+  margin: 20px 0 12px 0;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #1565c0;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+  color: #0d47a1;
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid rgba(13, 71, 161, 0.2);
+  transition: all 0.2s ease;
+}
+
+.skill-badge:hover {
+  background: linear-gradient(135deg, #1565c0 0%, #4a148c 100%);
+  color: white;
+  border-color: transparent;
+}
+
+@media (max-width: 900px) {
+  .careers-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .careers-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .career-card {
+    padding: 20px;
+  }
+
+  .career-title-section h3 {
+    font-size: 17px;
+  }
+
+  .skill-badge {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .careers-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  
+  .skill-badge {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+
+  .title-badge {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .careers-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .career-card {
+    padding: 20px;
+  }
+}

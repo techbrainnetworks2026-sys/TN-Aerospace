@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import './ProductDetailPage.css';
 import Markdown from 'markdown-to-jsx';
 import { products } from '../data/products';
 
@@ -78,26 +79,7 @@ export default function ProductDetailPage() {
                 </ul>
               </div>
 
-              <div className="s-card">
-                <div className="s-card-lbl">Product Info</div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                  {[
-                    { label: 'Product ID', value: `PROD-${String(product.id).padStart(3, '0')}` },
-                    { label: 'Category', value: product.category },
-                    { label: 'Status', value: 'Active' },
-                    { label: 'Version', value: '4.2.1' },
-                  ].map(({ label, value }) => (
-                    <div key={label} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}>
-                      <span style={{ color: 'var(--c-t2)' }}>{label}</span>
-                      <span style={{ color: 'var(--c-t1)', fontWeight: 500 }}>{value}</span>
-                    </div>
-                  ))}
-                  <div style={{ marginTop: 4, display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--c-a2)' }} />
-                    <span style={{ color: 'var(--c-a2)', fontSize: '0.85rem', fontWeight: 600 }}>Operational</span>
-                  </div>
-                </div>
-              </div>
+              
             </aside>
           </div>
 

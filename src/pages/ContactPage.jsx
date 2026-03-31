@@ -1,4 +1,6 @@
 import { useNavigate } from 'react-router-dom';
+import Footer from '../components/Footer';
+import './ContactPage.css';
 
 export default function ContactPage() {
   const navigate = useNavigate();

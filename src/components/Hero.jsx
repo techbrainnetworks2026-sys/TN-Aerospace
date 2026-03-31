@@ -1,4 +1,6 @@
 import aerospace from '../../src/assets/aerospace-background.jpeg'
+import './Hero.css';
+
 export default function Hero({ onWatchClick }) {
   return (
     <section className="hero">

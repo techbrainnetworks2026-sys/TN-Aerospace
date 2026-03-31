@@ -1,0 +1,235 @@
+/* ===================== PRODUCT SHOWCASE MODAL ===================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(2, 6, 23, 0.98);
+  backdrop-filter: blur(24px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.4s var(--ease) forwards;
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal-close {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid var(--c-border);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--t);
+  backdrop-filter: blur(12px);
+}
+
+.modal-close:hover {
+  background: var(--c-a2);
+  border-color: var(--c-a2);
+  color: var(--c-bg);
+  transform: rotate(90deg);
+}
+
+.modal-progress-container {
+  display: flex;
+  gap: 6px;
+  padding: 32px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+}
+
+.modal-progress-bar {
+  flex: 1;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.modal-progress-fill {
+  height: 100%;
+  background: var(--c-grad);
+  transition: width 0.05s linear;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+.modal-slide {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.4) saturate(1.2);
+  animation: modalZoom 10s linear infinite alternate;
+}
+
+@keyframes modalZoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.modal-fade {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(2, 6, 23, 0.5) 100%);
+}
+
+.modal-info {
+  position: relative;
+  z-index: 10;
+  padding: 0 40px;
+  text-align: center;
+  max-width: 900px;
+  animation: slideUpIn 0.6s var(--ease) forwards;
+}
+
+@keyframes slideUpIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-counter {
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--c-a2);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 24px;
+}
+
+.modal-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: 24px;
+  line-height: 1;
+}
+
+.modal-desc {
+  font-size: 1.25rem;
+  color: var(--c-t2);
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.modal-feats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.modal-feat {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--c-border-hi);
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.modal-controls {
+  position: absolute;
+  bottom: 48px;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+.modal-ctrl-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.modal-ctrl-btn:hover:not(:disabled) {
+  opacity: 1;
+}
+
+.modal-ctrl-btn:disabled {
+  opacity: 0.1;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .modal-close {
+    width: 40px;
+    height: 40px;
+    top: 12px;
+    right: 12px;
+    font-size: 0.9rem;
+  }
+
+  .modal-info {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-close {
+    width: 36px;
+    height: 36px;
+    top: 10px;
+    right: 10px;
+    font-size: 0.85rem;
+  }
+
+  .modal-info {
+    padding: 0 12px;
+  }
+
+  .modal-progress-container {
+    padding: 8px;
+    gap: 4px;
+  }
+}

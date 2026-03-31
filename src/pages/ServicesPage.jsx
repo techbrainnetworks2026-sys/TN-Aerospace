@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import './ServicesPage.css';
 
 export default function ServicesPage() {
   const navigate = useNavigate();
@@ -47,7 +48,7 @@ export default function ServicesPage() {
 
       <section className="service-section">
         <div className="container">
-          <div className="services-grid">
+          <div className="services-allgrid">
             {services.map((service) => (
               <div key={service.title} className="service-card">
                 <div className="service-icon">{service.icon}</div>

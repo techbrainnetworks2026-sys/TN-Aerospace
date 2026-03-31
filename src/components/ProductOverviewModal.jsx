@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import './ProductOverviewModal.css';
 import { products } from '../data/products';
 
 export default function ProductOverviewModal({ onClose }) {

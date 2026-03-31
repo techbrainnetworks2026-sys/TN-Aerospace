@@ -1,0 +1,74 @@
+/* ===================== SERVICES PAGE ===================== */
+.services-allgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+  margin-top: 48px;
+  justify-content: center;
+}
+
+.service-card {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--r-md);
+  padding: 36px 28px;
+  transition: var(--t);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.service-card:hover {
+  border-color: var(--c-a2);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-6px);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.15);
+}
+
+.service-icon {
+  font-size: 2.4rem;
+}
+
+.service-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--c-t1);
+}
+
+.service-desc {
+  font-size: 0.9rem;
+  color: var(--c-t2);
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .services-allgrid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-allgrid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .services-allgrid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-allgrid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .service-card {
+    padding: 20px;
+  }
+}
