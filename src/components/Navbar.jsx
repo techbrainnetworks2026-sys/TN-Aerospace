@@ -61,7 +61,7 @@ export default function Navbar() {
 
         <ul className={`navbar-nav ${isMenuOpen ? 'active' : ''}`}>
           <li><span className={`nav-link ${isActive('hero') ? 'active' : ''}`} onClick={() => scrollToSection('hero')}>Home</span></li>
-          <li><span className={`nav-link ${isActive('products') ? 'active' : ''}`} onClick={() => scrollToSection('products')}>Products</span></li>
+          <li><span className={`nav-link ${isActive ('products') ? 'active' : ''}`} onClick={() => scrollToSection('products')}>Products</span></li>
           <li><span className={`nav-link ${isActive('careers') ? 'active' : ''}`} onClick={() => scrollToSection('careers')}>Careers</span></li>
           <li><span className={`nav-link ${isActive('industries') ? 'active' : ''}`} onClick={() => scrollToSection('industries')}>Industries</span></li>
           <li><span className={`nav-link ${isActive('services') ? 'active' : ''}`} onClick={() => scrollToSection('services')}>Services</span></li>

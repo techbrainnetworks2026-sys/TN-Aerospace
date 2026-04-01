@@ -148,6 +148,7 @@
 
 @media (max-width: 480px) {
   .grid-products {
+    padding: 10px;
     grid-template-columns: 1fr;
     gap: 12px;
   }
