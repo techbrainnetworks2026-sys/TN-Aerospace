@@ -1,0 +1,122 @@
+.privacy-page {
+  padding-top: 120px;
+  padding-bottom: 100px;
+  background-color: var(--c-bg);
+  min-height: 100vh;
+}
+
+.privacy-header {
+  text-align: center;
+  margin-bottom: 60px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.privacy-header h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 16px;
+  background: linear-gradient(to bottom, #fff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.last-updated {
+  font-family: var(--f-mono);
+  font-size: 0.85rem;
+  color: var(--c-a2);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.privacy-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--s-xl);
+}
+
+.privacy-intro {
+  margin-bottom: 60px;
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  backdrop-filter: blur(12px);
+}
+
+.privacy-intro p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--c-t2);
+  margin: 0;
+}
+
+.privacy-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.privacy-section h2 {
+  font-size: 1.5rem;
+  color: var(--c-t1);
+  margin-bottom: 24px;
+  font-family: var(--f-head);
+  letter-spacing: 0.05em;
+}
+
+.policy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+}
+
+.policy-list li {
+  position: relative;
+  padding-left: 28px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--c-t2);
+}
+
+.policy-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--c-a2);
+  font-size: 0.9rem;
+}
+
+.privacy-footer {
+  margin-top: 80px;
+  padding: 40px;
+  border-top: 1px solid var(--c-border);
+  text-align: center;
+}
+
+.privacy-footer p {
+  font-size: 0.95rem;
+  color: var(--c-t3);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .privacy-page {
+    padding-top: 100px;
+  }
+  
+  .privacy-content {
+    padding: 0 var(--s-md);
+  }
+  
+  .privacy-intro {
+    padding: 24px;
+  }
+  
+  .privacy-section h2 {
+    font-size: 1.3rem;
+  }
+}

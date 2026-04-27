@@ -79,14 +79,14 @@ export default function ProductDetailPage() {
                 </ul>
               </div>
 
-              
+
             </aside>
           </div>
 
           <div style={{ marginTop: 96 }}>
             <div className="eyebrow">Also Explore</div>
-            <h2 style={{ marginBottom: 32 }}>Related Products</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 24 }}>
+            <h2 style={{ marginBottom: 32, marginLeft: '50px' }}>Related Products</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 24, paddingLeft: '50px' }}>
               {siblings.map((p) => (
                 <div
                   key={p.id}

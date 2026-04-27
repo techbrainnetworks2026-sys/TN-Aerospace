@@ -1,4 +1,4 @@
-import aerospace from '../../src/assets/aerospace-background.jpeg'
+import aerospace from '../../src/assets/aerospace-background.jpg'
 import './Hero.css';
 
 export default function Hero({ onWatchClick }) {

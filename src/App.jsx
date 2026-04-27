@@ -9,6 +9,10 @@ import ContactPage from './pages/ContactPage';
 import ServicesPage from './pages/ServicesPage';
 import CareersPage from './pages/CareersPage';
 import IndustriesPage from './pages/IndustriesPage';
+import SolutionDetailPage from './pages/SolutionDetailPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsPage from './pages/TermsPage';
+import SecurityPage from './pages/SecurityPage';
 import './index.css';
 import './App.css';
 
@@ -25,6 +29,10 @@ export default function App() {
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/industries" element={<IndustriesPage />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/solution/:slug" element={<SolutionDetailPage />} />
+          <Route path="/privacy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/security" element={<SecurityPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </main>

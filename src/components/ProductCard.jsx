@@ -17,7 +17,7 @@ export default function ProductCard({ product }) {
           src={product.image}
           alt={product.name}
           loading="lazy"
-          onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80'; }}
+          onError={(e) => { e.target.src = '/images/01_satellite_c2.png'; }}
         />
         <div className="pcard-img-fade" />
         <span className="pcard-badge">{product.category}</span>

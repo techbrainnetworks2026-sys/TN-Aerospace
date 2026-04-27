@@ -21,34 +21,44 @@ export default function ProductOverviewModal({ onClose }) {
   }, []);
 
   const nextSlide = useCallback(() => {
-    if (currentIndex < products.length - 1) {
-      setCurrentIndex((prev) => prev + 1);
-      setProgress(0);
-    } else {
-      onClose(); // End of video
-    }
-  }, [currentIndex, onClose]);
+    setCurrentIndex((prev) => {
+      if (prev < products.length - 1) {
+        setProgress(0);
+        return prev + 1;
+      } else {
+        onClose();
+        return prev;
+      }
+    });
+  }, [onClose]);
 
   const prevSlide = useCallback(() => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prev) => prev - 1);
-      setProgress(0);
-    }
-  }, [currentIndex]);
+    setCurrentIndex((prev) => {
+      if (prev > 0) {
+        setProgress(0);
+        return prev - 1;
+      }
+      return prev;
+    });
+  }, []);
 
   // Handle auto-play progress
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 100) {
-          nextSlide();
-          return 0;
-        }
+        if (prev >= 100) return 100;
         return prev + (100 / (DURATION_PER_SLIDE / UPDATE_INTERVAL));
       });
     }, UPDATE_INTERVAL);
     return () => clearInterval(timer);
-  }, [nextSlide]);
+  }, []);
+
+  // Trigger next slide when progress hits 100
+  useEffect(() => {
+    if (progress >= 100) {
+      nextSlide();
+    }
+  }, [progress, nextSlide]);
 
   const p = products[currentIndex];
 
@@ -77,7 +87,7 @@ export default function ProductOverviewModal({ onClose }) {
           <div className="modal-fade" />
           
           <div className="modal-info">
-            <div className="modal-counter">Product {currentIndex + 1} of 20</div>
+            <div className="modal-counter">Product {currentIndex + 1} of {products.length}</div>
             <div className="modal-badge" style={{ color: p.accentColor, borderColor: p.accentColor }}>{p.category}</div>
             <h2 className="modal-title">{p.name}</h2>
             <p className="modal-desc">{p.tagline}</p>

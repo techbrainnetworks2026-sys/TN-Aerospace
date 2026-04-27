@@ -19,6 +19,8 @@
   z-index: 0;
 }
 
+
+
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -95,12 +97,12 @@
 }
 
 .hero-sub {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.85);
-  max-width: 600px;
+  max-width: 1200px;
   margin-bottom: 48px;
   line-height: 1.8;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .hero-actions {

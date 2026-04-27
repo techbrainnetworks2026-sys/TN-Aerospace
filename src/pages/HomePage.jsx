@@ -420,7 +420,7 @@ export default function HomePage() {
               TechBrain Networks is a leading Software Product Development company that specializes in AI, IoT, Big Data, Blockchain, Cloud Computing, Quantum Computing and Digital Marketing. We are revolutionizing the future of technology with 480 innovative products spanning 24 industries.
             </p>
           </div>
-          
+
           <div className="our-values-grid">
             <div className="our-value-card">
               <div className="our-value-letter">O</div>
