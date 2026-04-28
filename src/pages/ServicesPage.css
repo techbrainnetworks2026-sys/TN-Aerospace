@@ -1,14 +1,22 @@
 /* ===================== SERVICES PAGE ===================== */
-.services-allgrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 28px;
-  margin-top: 48px;
-  justify-content: center;
-  align-items: center;
-  margin-left: 100px;
+
+/* Section wrapper — equal padding left & right = centered */
+.service-section {
+  padding: 60px var(--s-xl);
+  width: 100%;
+  box-sizing: border-box;
 }
- 
+
+/* Grid — fixed 4 columns on desktop */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-top: 0;
+  width: 100%;
+}
+
+/* ---- Card ---- */
 .service-card {
   background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
   border: 1.5px solid var(--c-border);
@@ -35,7 +43,7 @@
 .service-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--c-t1);
+  color: #0d47a1;
 }
 
 .service-desc {
@@ -44,33 +52,44 @@
   line-height: 1.7;
 }
 
-@media (max-width: 900px) {
+/* ===================== RESPONSIVE ===================== */
+
+/* Large tablet — 3 columns */
+@media (max-width: 1100px) {
   .services-allgrid {
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
   }
 }
 
-@media (max-width: 768px) {
+/* Tablet — 2 columns */
+@media (max-width: 800px) {
+  .service-section {
+    padding: 48px var(--s-md);
+  }
+
   .services-allgrid {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 }
 
-@media (max-width: 600px) {
-  .services-allgrid {
-    grid-template-columns: 1fr !important;
-    gap: 12px !important;
+/* Mobile — 1 column */
+@media (max-width: 520px) {
+  .service-section {
+    padding: 36px 16px;
   }
-}
 
-@media (max-width: 480px) {
   .services-allgrid {
-    grid-template-columns: 1fr !important;
-    gap: 12px !important;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .service-card {
-    padding: 20px;
+    padding: 24px 20px;
+  }
+
+  .service-icon {
+    font-size: 2rem;
   }
 }

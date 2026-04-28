@@ -52,16 +52,11 @@ export default function ProductDetailPage() {
         <div className="container">
           <div className="det-layout">
             <div className="det-markdown">
-              {loading ? (
-                <div className="spinner-wrap">
-                  <div className="spin" />
-                  <span style={{ color: 'var(--c-t2)' }}>Loading documentation...</span>
-                </div>
-              ) : (
+             
                 <article className="md">
                   <Markdown>{content}</Markdown>
                 </article>
-              )}
+            
             </div>
 
             <aside className="det-sidebar">

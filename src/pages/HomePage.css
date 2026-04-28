@@ -91,6 +91,308 @@
   backdrop-filter: blur(12px);
 }
 
+/* ===================== CAREERS SECTION (Home) ===================== */
+.careers-bg {
+  background: linear-gradient(135deg, #0a1428 0%, #1a2332 50%, #0d47a1 100%);
+  padding: 80px 20px;
+  min-height: 100vh;
+}
+
+.careers-bg .sec-head .eyebrow,
+.careers-bg .sec-head h2,
+.careers-bg .sec-head p {
+  color: white;
+}
+
+.careers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 50px;
+}
+
+.our-values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+
+.career-card {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border: 1px solid rgba(13, 71, 161, 0.1);
+  border-radius: 16px;
+  padding: 28px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.career-card:hover {
+  border-color: rgba(13, 71, 161, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(13, 71, 161, 0.2);
+}
+
+.career-title-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.title-badge {
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #0d47a1 0%, #1565c0 100%);
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.career-title-section h3 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #0d47a1 0%, #1565c0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.skills-label {
+  margin: 20px 0 12px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #1565c0;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+  color: #0d47a1;
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid rgba(13, 71, 161, 0.2);
+  transition: all 0.2s ease;
+}
+
+.skill-badge:hover {
+  background: linear-gradient(135deg, #1565c0 0%, #4a148c 100%);
+  color: white;
+  border-color: transparent;
+}
+
+/* ===================== INDUSTRIES SECTION (Home) ===================== */
+.industries-bg {
+  background: linear-gradient(135deg, #0a1428 0%, #1a2332 50%, #0d47a1 100%);
+  padding: 80px 20px;
+  color: white;
+  min-height: 100vh;
+}
+
+.industries-bg .sec-head h2,
+.industries-bg .sec-head p {
+  color: white;
+}
+
+.industries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 24px;
+  margin-top: 50px;
+}
+
+.industry-card {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border: 1px solid rgba(13, 71, 161, 0.1);
+  border-radius: 16px;
+  padding: 22px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.industry-card:hover {
+  border-color: rgba(13, 71, 161, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(13, 71, 161, 0.2);
+}
+
+.industry-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.industry-card h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #0d47a1 0%, #1565c0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===================== SERVICES SECTION (Home) ===================== */
+.services-bg {
+  background: linear-gradient(135deg, #0a1428 0%, #1a2332 50%, #0d47a1 100%);
+  padding: 80px 20px;
+ 
+}
+
+.services-bg .sec-head .eyebrow,
+.services-bg .sec-head h2,
+.services-bg .sec-head p {
+  color: white;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 50px;
+  justify-content: center;
+}
+
+.home-service-card {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border: 1px solid rgba(13, 71, 161, 0.1);
+  border-radius: 16px;
+  padding: 32px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-service-card:hover {
+  border-color: rgba(13, 71, 161, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(13, 71, 161, 0.2);
+}
+
+.home-service-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.home-service-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 12px 0;
+  background: linear-gradient(135deg, #0d47a1 0%, #1565c0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.home-service-desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+  text-align: center;
+}
+
+/* ===================== CONTACT SECTION (Home) ===================== */
+.contact-bg {
+  background: linear-gradient(135deg, #0a1428 0%, #1a2332 50%, #0d47a1 100%);
+  padding: 80px 20px;
+  min-height: 80vh;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin-top: 50px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-contact-card {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border: 1px solid rgba(13, 71, 161, 0.1);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.home-contact-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0d47a1;
+  margin-bottom: 16px;
+}
+
+.home-contact-location h4 {
+  font-size: 16px;
+  color: #0d47a1;
+  margin: 12px 0;
+}
+
+.home-contact-location p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.home-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.home-contact-item {
+  text-align: left;
+}
+
+.home-contact-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1565c0;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.home-contact-item a {
+  font-size: 14px;
+  color: #0d47a1;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.home-contact-item a:hover {
+  color: #1565c0;
+}
+
+/* ===================== RESPONSIVE ===================== */
 @media (max-width: 1200px) {
   .grid-products {
     grid-template-columns: repeat(3, 1fr);
@@ -102,6 +404,20 @@
   .grid-products {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid-products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .careers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .our-values-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -119,6 +435,38 @@
   .search-box {
     max-width: 100%;
     padding: 12px 16px;
+  }
+
+  .industries-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .careers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .our-values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .industry-card {
+    padding: 20px;
+  }
+
+  .industry-icon {
+    font-size: 40px;
+  }
+
+  .industry-card h3 {
+    font-size: 14px;
   }
 }
 
@@ -143,6 +491,26 @@
     width: 90%;
     padding: 10px 12px;
     font-size: 0.95rem;
+  }
+
+  .industries-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .careers-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 

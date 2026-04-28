@@ -30,13 +30,21 @@ export default function Navbar() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
+        // Find the entry that is currently intersecting
+        // If multiple are intersecting, we want the one that is most prominent
+        // or the one that entered the zone.
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setActiveSection(entry.target.id);
           }
         });
       },
-      { threshold: 0.3 }
+      // { 
+      //   // Use a threshold that triggers when the section occupies 
+      //   // at least a small portion of the top area.
+      //   threshold: [0.1, 0.5, 0.8],
+      //   rootMargin: '-10px 410px -651% 0px' // Trigger near the top, just below the navbar
+      // }
     );
 
     const sections = ['hero', 'products', 'careers', 'industries', 'services', 'about', 'contact'];
@@ -60,7 +68,7 @@ export default function Navbar() {
         <Link to="/" className="navbar-brand" onClick={() => scrollToSection('hero')}>
           <span className="brand-icon">🛰</span>
           <div className="brand-text">
-            <span className="brand-accent">TechBrain Networks</span>
+            <span className="brand-accent">Techbrain Networks</span>
             <span className="brand-subtext">AEROSPACE</span>
           </div>
         </Link>

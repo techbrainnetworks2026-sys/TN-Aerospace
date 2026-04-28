@@ -15,12 +15,7 @@
   backdrop-filter: blur(12px);
 }
 
-.contact-card:hover {
-  border-color: var(--c-a2);
-  background: rgba(255, 255, 255, 0.06);
-  transform: translateY(-4px);
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.1);
-}
+ 
 
 .contact-title {
   font-size: 1.15rem;
@@ -32,7 +27,7 @@
 .contact-location h4 {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--c-t1);
+  color: #0d47a1;
   margin-bottom: 8px;
   margin-top: 12px;
 }
@@ -69,7 +64,7 @@
 
 .contact-item a {
   font-size: 0.9rem;
-  color: var(--c-t1);
+  color: #0d47a1;
   text-decoration: none;
   transition: var(--t);
 }

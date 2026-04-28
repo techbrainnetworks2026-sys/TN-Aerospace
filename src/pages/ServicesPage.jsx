@@ -47,7 +47,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="service-section">
-        <div className="container">
+        <div className="container" >
           <div className="services-allgrid" >
             {services.map((service) => (
               <div key={service.title} className="service-card">

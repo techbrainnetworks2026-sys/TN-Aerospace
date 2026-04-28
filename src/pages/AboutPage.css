@@ -10,6 +10,7 @@
   text-align: center;
   background: var(--c-bg);
 }
+ 
 
 .about-hero::before {
   content: '';
@@ -88,9 +89,9 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
-  padding: 0 var(--s-xl);
-  margin: 48px auto 0;
-  max-width: 1200px;
+ 
+ 
+  max-width: 1500px;
 }
 
 .our-value-card {
@@ -105,6 +106,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  
 }
 
 .our-value-card:hover {
@@ -136,10 +138,7 @@
   font-size: 0.95rem;
   color: var(--c-t2);
   line-height: 1.8;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  line-clamp: 4;
+ 
   overflow: hidden;
 }
 
