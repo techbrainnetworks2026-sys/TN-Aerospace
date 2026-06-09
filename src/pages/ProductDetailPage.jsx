@@ -30,90 +30,74 @@ export default function ProductDetailPage() {
 
   return (
     <>
-      <div className="page-hero-wrap">
-        <img className="page-hero-img" src={product.image} alt={product.name} />
-        <div className="page-hero-fade" />
-        <div className="page-hero-content">
-          <button className="back-btn" onClick={() => navigate('/')}>
+      <div className="pdetail__hero-wrap">
+        <img className="pdetail__hero-img" src={product.image} alt={product.name} />
+        <div className="pdetail__hero-fade" />
+        <div className="pdetail__hero-content">
+          <button className="pdetail__back-btn btn btn-ghost" onClick={() => navigate('/')}>
             ← Back to Products
           </button>
           <div
-            className="det-cat-badge"
+            className="pdetail__cat-badge"
             style={{ color: product.accentColor, borderColor: product.accentColor, background: `${product.accentColor}1A` }}
           >
             {product.category}
           </div>
-          <h1 className="det-title">{product.name}</h1>
-          <p className="det-tag">{product.tagline}</p>
+          <h1 className="pdetail__title">{product.name}</h1>
+          <p className="pdetail__tagline">{product.tagline}</p>
         </div>
       </div>
 
-      <div className="section">
-        <div className="container">
-          <div className="det-layout">
-            <div className="det-markdown">
-             
-                <article className="md">
-                  <Markdown>{content}</Markdown>
-                </article>
-            
+      <div className="pdetail__body-section section">
+        <div className="pdetail__container container">
+          <div className="pdetail__layout">
+            <div className="pdetail__markdown-col">
+              <article className="pdetail__md-article">
+                <Markdown>{content}</Markdown>
+              </article>
             </div>
 
-            <aside className="det-sidebar">
-              <div className="s-card">
-                <div className="s-card-lbl">Key Features</div>
-                <ul className="feat-list">
+            <aside className="pdetail__sidebar">
+              <div className="pdetail__sidebar-card">
+                <div className="pdetail__sidebar-card-label">Key Features</div>
+                <ul className="pdetail__feat-list">
                   {product.features.map((f, i) => (
-                    <li key={i} className="feat-row">
-                      <div className="feat-check" style={{ background: `${product.accentColor}26`, color: product.accentColor }}>
+                    <li key={i} className="pdetail__feat-row">
+                      <div
+                        className="pdetail__feat-check"
+                        style={{ background: `${product.accentColor}26`, color: product.accentColor }}
+                      >
                         ✓
                       </div>
-                      {f}
+                      <span className="pdetail__feat-text">{f}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-
-
             </aside>
           </div>
 
-          <div style={{ marginTop: 96 }}>
-            <div className="eyebrow">Also Explore</div>
-            <h2 style={{ marginBottom: 32, marginLeft: '50px' }}>Related Products</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 24, paddingLeft: '50px' }}>
+          <div className="pdetail__related-section">
+            <div className="pdetail__related-eyebrow eyebrow">Also Explore</div>
+            <h2 className="pdetail__related-title">Related Products</h2>
+            <div className="pdetail__related-grid">
               {siblings.map((p) => (
                 <div
                   key={p.id}
+                  className="pdetail__related-card"
                   onClick={() => navigate(`/product/${p.slug}`)}
-                  style={{
-                    background: 'var(--c-card)',
-                    border: '1px solid var(--c-border)',
-                    borderRadius: 'var(--r-md)',
-                    overflow: 'hidden',
-                    cursor: 'pointer',
-                    transition: 'var(--t)',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--c-a1)';
-                    e.currentTarget.style.transform = 'translateY(-4px)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--c-border)';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
                 >
                   <img
+                    className="pdetail__related-card-img"
                     src={p.image}
                     alt={p.name}
-                    style={{ width: '100%', height: 160, objectFit: 'cover' }}
                   />
-                  <div style={{ padding: 24 }}>
-                    <div style={{ fontSize: '0.72rem', color: p.accentColor, fontWeight: 700, marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                  <div className="pdetail__related-card-body">
+                    <div className="pdetail__related-card-cat" style={{ color: p.accentColor }}>
                       {p.category}
                     </div>
-                    <div style={{ fontFamily: 'var(--f-head)', fontWeight: 600, marginBottom: 8, fontSize: '1.05rem', color: 'var(--c-t1)' }}>{p.name}</div>
-                    <div style={{ fontSize: '0.85rem', color: 'var(--c-t2)', lineHeight: 1.6 }}>{p.tagline}</div>
+                    <div className="pdetail__related-card-name">{p.name}</div>
+                    <div className="pdetail__related-card-tag">{p.tagline}</div>
                   </div>
                 </div>
               ))}

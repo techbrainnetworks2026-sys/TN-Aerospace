@@ -1,11 +1,16 @@
-.security-page {
+/* ===================== SECURITY PAGE ===================== */
+.security__page-wrapper {
   padding-top: 120px;
   padding-bottom: 100px;
   background-color: var(--c-bg);
   min-height: 100vh;
 }
 
-.security-header {
+.security__container {
+  width: 100%;
+}
+
+.security__header {
   text-align: center;
   margin-bottom: 60px;
   max-width: 800px;
@@ -13,21 +18,43 @@
   margin-right: auto;
 }
 
-.security-header h1 {
+.security__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--c-a2);
+  margin-bottom: var(--s-sm);
+}
+
+.security__title {
   font-size: clamp(2.5rem, 6vw, 4rem);
   margin-bottom: 16px;
   background: linear-gradient(to bottom, #fff, #94a3b8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.security-content {
+.security__tagline {
+  font-family: var(--f-mono);
+  font-size: 0.85rem;
+  color: var(--c-a2);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+
+.security__content {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 var(--s-xl);
 }
 
-.security-intro {
+.security__intro {
   margin-bottom: 60px;
   padding: 32px;
   background: rgba(255, 255, 255, 0.02);
@@ -37,20 +64,25 @@
   text-align: center;
 }
 
-.security-intro p {
+.security__intro-text {
   font-size: 1.15rem;
   line-height: 1.8;
   color: var(--c-t2);
   margin: 0;
 }
 
-.security-sections {
+.security__sections {
   display: flex;
   flex-direction: column;
   gap: 48px;
 }
 
-.security-section h2 {
+.security__section {
+  display: flex;
+  flex-direction: column;
+}
+
+.security__section-title {
   font-size: 1.5rem;
   color: var(--c-t1);
   margin-bottom: 24px;
@@ -61,19 +93,21 @@
   gap: 12px;
 }
 
-.security-section h2::before {
+.security__section-title::before {
   content: '🛡️';
   font-size: 1.2rem;
 }
 
-.policy-list {
+.security__policy-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.policy-list li {
+.security__policy-item {
   position: relative;
   padding-left: 28px;
   font-size: 1.05rem;
@@ -81,7 +115,7 @@
   color: var(--c-t2);
 }
 
-.policy-list li::before {
+.security__policy-item::before {
   content: '✓';
   position: absolute;
   left: 0;
@@ -89,14 +123,14 @@
   font-weight: 700;
 }
 
-.security-footer {
+.security__footer {
   margin-top: 80px;
   padding: 40px;
   border-top: 1px solid var(--c-border);
   text-align: center;
 }
 
-.security-footer p {
+.security__footer-text {
   font-size: 0.95rem;
   color: var(--c-t3);
   max-width: 600px;
@@ -104,8 +138,28 @@
   line-height: 1.6;
 }
 
+.security__footer-link {
+  color: var(--c-a2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.security__footer-link:hover {
+  color: var(--c-a3);
+}
+
 @media (max-width: 768px) {
-  .security-page {
+  .security__page-wrapper {
     padding-top: 100px;
+  }
+
+  .security__content {
+    padding: 0 var(--s-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .security__content {
+    padding: 0 16px;
   }
 }

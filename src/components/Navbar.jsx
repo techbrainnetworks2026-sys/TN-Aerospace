@@ -28,23 +28,25 @@ export default function Navbar() {
   };
 
   useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY < 80) {
+        setActiveSection('hero');
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
     const observer = new IntersectionObserver(
       (entries) => {
-        // Find the entry that is currently intersecting
-        // If multiple are intersecting, we want the one that is most prominent
-        // or the one that entered the zone.
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setActiveSection(entry.target.id);
           }
         });
       },
-      // { 
-      //   // Use a threshold that triggers when the section occupies 
-      //   // at least a small portion of the top area.
-      //   threshold: [0.1, 0.5, 0.8],
-      //   rootMargin: '-10px 410px -651% 0px' // Trigger near the top, just below the navbar
-      // }
+      {
+        rootMargin: '-15% 0px -75% 0px',
+        threshold: 0,
+      }
     );
 
     const sections = ['hero', 'products', 'careers', 'industries', 'services', 'about', 'contact'];
@@ -55,7 +57,10 @@ export default function Navbar() {
       }
     });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const isActive = (sectionId) => {
@@ -65,32 +70,32 @@ export default function Navbar() {
   return (
     <>
       <nav className="navbar">
-        <Link to="/" className="navbar-brand" onClick={() => scrollToSection('hero')}>
-          <span className="brand-icon">🛰</span>
-          <div className="brand-text">
-            <span className="brand-accent">Techbrain Networks</span>
-            <span className="brand-subtext">AEROSPACE</span>
+        <Link to="/" className="navbar__brand" onClick={() => scrollToSection('hero')}>
+          <span className="navbar__brand-icon">🛰</span>
+          <div className="navbar__brand-text">
+            <span className="navbar__brand-accent">Techbrain Networks</span>
+            <span className="navbar__brand-subtext">AEROSPACE</span>
           </div>
         </Link>
 
         <button
-          className={`hamburger ${isMenuOpen ? 'active' : ''}`}
+          className={`navbar__hamburger ${isMenuOpen ? 'navbar__hamburger--active' : ''}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span className="navbar__hamburger-line"></span>
+          <span className="navbar__hamburger-line"></span>
+          <span className="navbar__hamburger-line"></span>
         </button>
 
-        <ul className={`navbar-nav ${isMenuOpen ? 'active' : ''}`}>
-          <li><span className={`nav-link ${isActive('hero') ? 'active' : ''}`} onClick={() => scrollToSection('hero')}>Home</span></li>
-          <li><span className={`nav-link ${isActive('products') ? 'active' : ''}`} onClick={() => scrollToSection('products')}>Products</span></li>
-          <li><span className={`nav-link ${isActive('careers') ? 'active' : ''}`} onClick={() => scrollToSection('careers')}>Careers</span></li>
-          <li><span className={`nav-link ${isActive('industries') ? 'active' : ''}`} onClick={() => scrollToSection('industries')}>Industries</span></li>
-          <li><span className={`nav-link ${isActive('services') ? 'active' : ''}`} onClick={() => scrollToSection('services')}>Services</span></li>
-          <li><span className={`nav-link ${isActive('about') ? 'active' : ''}`} onClick={() => scrollToSection('about')}>About Us</span></li>
-          <li><span className={`nav-link ${isActive('contact') ? 'active' : ''}`} onClick={() => scrollToSection('contact')}>Contact Us</span></li>
+        <ul className={`navbar__nav ${isMenuOpen ? 'navbar__nav--active' : ''}`}>
+          <li className="navbar__nav-item"><span className={`navbar__nav-link ${isActive('hero') ? 'navbar__nav-link--active' : ''}`} onClick={() => scrollToSection('hero')}>Home</span></li>
+          <li className="navbar__nav-item"><span className={`navbar__nav-link ${isActive('products') ? 'navbar__nav-link--active' : ''}`} onClick={() => scrollToSection('products')}>Products</span></li>
+          <li className="navbar__nav-item"><span className={`navbar__nav-link ${isActive('careers') ? 'navbar__nav-link--active' : ''}`} onClick={() => scrollToSection('careers')}>Careers</span></li>
+          <li className="navbar__nav-item"><span className={`navbar__nav-link ${isActive('industries') ? 'navbar__nav-link--active' : ''}`} onClick={() => scrollToSection('industries')}>Industries</span></li>
+          <li className="navbar__nav-item"><span className={`navbar__nav-link ${isActive('services') ? 'navbar__nav-link--active' : ''}`} onClick={() => scrollToSection('services')}>Services</span></li>
+          <li className="navbar__nav-item"><span className={`navbar__nav-link ${isActive('about') ? 'navbar__nav-link--active' : ''}`} onClick={() => scrollToSection('about')}>About Us</span></li>
+          <li className="navbar__nav-item"><span className={`navbar__nav-link ${isActive('contact') ? 'navbar__nav-link--active' : ''}`} onClick={() => scrollToSection('contact')}>Contact Us</span></li>
         </ul>
       </nav>
     </>

@@ -1,0 +1,12 @@
+# robots.txt for TechBrain Networks Aerospace
+# https://aerospace.techbrainnetworks.com/
+
+User-agent: *
+Allow: /
+
+# Disallow admin or private paths (add any sensitive routes here)
+Disallow: /api/
+Disallow: /_vite/
+
+# Sitemap location
+Sitemap: https://aerospace.techbrainnetworks.com/sitemap.xml

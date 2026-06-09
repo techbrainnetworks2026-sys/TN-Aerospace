@@ -23,33 +23,33 @@ export default function ProductsPage() {
     <>
       {showVideo && <ProductOverviewModal onClose={() => setShowVideo(false)} />}
 
-      <section className="section products-bg" id="products">
-        <div className="container">
-          <button className="back-btn" onClick={() => navigate('/')}>← Back to Home</button>
+      <section className="home__section home__products-bg" id="products" style={{ minHeight: '100vh', paddingTop: '100px' }}>
+        <div className="home__container container">
+          <button className="btn btn-ghost" style={{ marginBottom: '24px' }} onClick={() => navigate('/')}>← Back to Home</button>
           
-          <div className="sec-head">
-            <div className="eyebrow">Our Portfolio</div>
-            <h2>20 Mission-Critical Platforms</h2>
-            <p>
+          <div className="home__sec-head">
+            <div className="home__eyebrow eyebrow">Our Portfolio</div>
+            <h2 className="home__sec-title">20 Mission-Critical Platforms</h2>
+            <p className="home__sec-desc">
               From satellite operations to deep space exploration, our products power the most ambitious missions in aerospace.
             </p>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div className="home__search-wrapper" style={{ display: 'flex', justifyContent: 'center' }}>
             <input
               type="text"
-              className="search-box"
+              className="home__search-box"
               placeholder="Search products..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
 
-          <div className="tabs">
+          <div className="home__tabs">
             {categories.map((cat) => (
               <button
                 key={cat}
-                className={`tab ${activeCategory === cat ? 'active' : ''}`}
+                className={`home__tab ${activeCategory === cat ? 'home__tab--active' : ''}`}
                 onClick={() => setActiveCategory(cat)}
               >
                 {cat}
@@ -58,11 +58,11 @@ export default function ProductsPage() {
           </div>
 
           {filtered.length === 0 ? (
-            <div style={{ textAlign: 'center', color: 'var(--c-t2)', padding: '60px 0', fontSize: '1.1rem' }}>
+            <div className="home__no-results" style={{ textAlign: 'center', color: 'var(--c-t2)', padding: '60px 0', fontSize: '1.1rem' }}>
               No products found matching "{search}".
             </div>
           ) : (
-            <div className="grid-products">
+            <div className="home__grid-products">
               {filtered.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}

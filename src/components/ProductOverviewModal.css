@@ -1,5 +1,5 @@
 /* ===================== PRODUCT SHOWCASE MODAL ===================== */
-.modal-overlay {
+.modal__overlay {
   position: fixed;
   inset: 0;
   z-index: 9999;
@@ -11,7 +11,7 @@
   animation: fadeIn 0.4s var(--ease) forwards;
 }
 
-.modal-content {
+.modal__content {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -20,7 +20,7 @@
   overflow: hidden;
 }
 
-.modal-close {
+.modal__close {
   position: absolute;
   top: 32px;
   right: 32px;
@@ -40,14 +40,14 @@
   backdrop-filter: blur(12px);
 }
 
-.modal-close:hover {
+.modal__close:hover {
   background: var(--c-a2);
   border-color: var(--c-a2);
   color: var(--c-bg);
   transform: rotate(90deg);
 }
 
-.modal-progress-container {
+.modal__progress-container {
   display: flex;
   gap: 6px;
   padding: 32px;
@@ -58,7 +58,7 @@
   z-index: 50;
 }
 
-.modal-progress-bar {
+.modal__progress-bar {
   flex: 1;
   height: 3px;
   background: rgba(255, 255, 255, 0.1);
@@ -66,14 +66,14 @@
   overflow: hidden;
 }
 
-.modal-progress-fill {
+.modal__progress-fill {
   height: 100%;
   background: var(--c-grad);
   transition: width 0.05s linear;
   box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
 }
 
-.modal-slide {
+.modal__slide {
   flex: 1;
   position: relative;
   overflow: hidden;
@@ -82,7 +82,7 @@
   justify-content: center;
 }
 
-.modal-img {
+.modal__img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -96,19 +96,18 @@
   from {
     transform: scale(1);
   }
-
   to {
     transform: scale(1.1);
   }
 }
 
-.modal-fade {
+.modal__fade {
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at center, transparent 0%, rgba(2, 6, 23, 0.5) 100%);
 }
 
-.modal-info {
+.modal__info {
   position: relative;
   z-index: 10;
   padding: 0 40px;
@@ -122,14 +121,13 @@
     opacity: 0;
     transform: translateY(40px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-.modal-counter {
+.modal__counter {
   font-family: var(--f-mono);
   font-size: 0.75rem;
   font-weight: 700;
@@ -139,36 +137,58 @@
   margin-bottom: 24px;
 }
 
-.modal-title {
+.modal__badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: var(--f-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(6, 182, 212, 0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--c-border-hi);
+  margin-bottom: 24px;
+}
+
+.modal__title {
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   margin-bottom: 24px;
   line-height: 1;
 }
 
-.modal-desc {
+.modal__desc {
   font-size: 1.25rem;
   color: var(--c-t2);
   margin-bottom: 40px;
   line-height: 1.6;
 }
 
-.modal-feats {
+.modal__feats {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
 }
 
-.modal-feat {
+.modal__feat {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--c-border-hi);
   padding: 8px 20px;
   border-radius: 100px;
   font-size: 0.9rem;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.modal-controls {
+.modal__feat-bullet {
+  font-weight: bold;
+}
+
+.modal__controls {
   position: absolute;
   bottom: 48px;
   left: 0;
@@ -180,7 +200,7 @@
   gap: 32px;
 }
 
-.modal-ctrl-btn {
+.modal__ctrl-btn {
   background: transparent;
   border: none;
   color: #fff;
@@ -192,43 +212,40 @@
   transition: 0.3s;
 }
 
-.modal-ctrl-btn:hover:not(:disabled) {
+.modal__ctrl-btn:hover:not(:disabled) {
   opacity: 1;
 }
 
-.modal-ctrl-btn:disabled {
+.modal__ctrl-btn:disabled {
   opacity: 0.1;
   cursor: not-allowed;
 }
 
 @media (max-width: 600px) {
-  .modal-close {
+  .modal__close {
     width: 40px;
     height: 40px;
     top: 12px;
     right: 12px;
     font-size: 0.9rem;
   }
-
-  .modal-info {
+  .modal__info {
     padding: 0 16px;
   }
 }
 
 @media (max-width: 480px) {
-  .modal-close {
+  .modal__close {
     width: 36px;
     height: 36px;
     top: 10px;
     right: 10px;
     font-size: 0.85rem;
   }
-
-  .modal-info {
+  .modal__info {
     padding: 0 12px;
   }
-
-  .modal-progress-container {
+  .modal__progress-container {
     padding: 8px;
     gap: 4px;
   }
