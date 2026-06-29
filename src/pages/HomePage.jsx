@@ -220,18 +220,58 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Contact Section Preview */}
-      <section className="home__section" id="contact" style={{ padding: '80px 20px', textAlign: 'center', background: 'var(--c-surface)' }}>
+      {/* ── Contact Section ── */}
+      <section id="contact" className="home__section home__contact-bg">
         <div className="home__container container">
           <div className="home__sec-head">
             <div className="home__eyebrow eyebrow">Get In Touch</div>
             <h2 className="home__sec-title">Contact Us</h2>
-            <p className="home__sec-desc" style={{ maxWidth: '600px', margin: '20px auto 30px' }}>
-              Ready to explore our products or have a question? Reach out to our global team today.
+            <p className="home__sec-desc">
+              Your all-in-one stop for aerospace technology. Reach out to our global team — we're ready to help.
             </p>
-            <a href="/contact" className="home__tab home__tab--active" style={{ textDecoration: 'none', display: 'inline-block' }}>
-              Visit Contact Page
-            </a>
+          </div>
+
+          <div className="home__contact-grid">
+            {/* India */}
+            <div className="home__contact-card">
+              <div className="home__contact-card-icon">🇮🇳</div>
+              <h3 className="home__contact-card-title">India</h3>
+              <h4 className="home__contact-card-city">Thanjavur</h4>
+              <p className="home__contact-card-addr">
+                6/12 Papa vaikal Street, Ayyampettai Post<br />
+                Papanasam Taluk<br />
+                Thanjavur 614201, Tamilnadu, India.
+              </p>
+            </div>
+
+            {/* United Kingdom */}
+            <div className="home__contact-card">
+              <div className="home__contact-card-icon">🇬🇧</div>
+              <h3 className="home__contact-card-title">United Kingdom</h3>
+              <h4 className="home__contact-card-city">London</h4>
+              <p className="home__contact-card-addr">
+                71-75 Shelton Street, Covent Garden,<br />
+                London, WC2H 9JQ, United Kingdom.
+              </p>
+            </div>
+
+            {/* Direct Contact */}
+            <div className="home__contact-card">
+              <div className="home__contact-card-icon">📡</div>
+              <h3 className="home__contact-card-title">Direct Contact</h3>
+              <div className="home__contact-card-info">
+                <div className="home__contact-card-item">
+                  <span className="home__contact-card-label">Phone</span>
+                  <a href="tel:+918754906714" className="home__contact-card-link">+91 8754906714</a>
+                </div>
+                <div className="home__contact-card-item">
+                  <span className="home__contact-card-label">Email</span>
+                  <a href="mailto:contact@techbrainnetworks.com" className="home__contact-card-link">
+                    contact@techbrainnetworks.com
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -551,3 +551,119 @@
     font-size: 0.9rem;
   }
 }
+
+/* ===================== CONTACT SECTION (Home) ===================== */
+.home__contact-bg {
+  background: linear-gradient(135deg, #0a1428 0%, #1a2332 50%, #0d47a1 100%);
+  padding: 80px 20px;
+}
+
+.home__contact-bg .home__sec-head .home__eyebrow,
+.home__contact-bg .home__sec-head h2,
+.home__contact-bg .home__sec-head p {
+  color: white;
+}
+
+.home__contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.home__contact-card {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border: 1px solid rgba(13, 71, 161, 0.1);
+  border-radius: 16px;
+  padding: 36px 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home__contact-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(13, 71, 161, 0.25);
+}
+
+.home__contact-card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  color: #0d47a1;
+}
+
+.home__contact-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0d47a1;
+  margin: 0 0 12px;
+}
+
+.home__contact-card-city {
+  font-size: 0.95rem;
+  color: #0d47a1;
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+
+.home__contact-card-addr {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.home__contact-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.home__contact-card-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.home__contact-card-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #1565c0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.home__contact-card-link {
+  font-size: 0.95rem;
+  color: #0d47a1;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+  word-break: break-all;
+}
+
+.home__contact-card-link:hover {
+  color: #1565c0;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .home__contact-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .home__contact-bg {
+    padding: 60px 16px;
+  }
+  .home__contact-grid {
+    gap: 16px;
+  }
+  .home__contact-card {
+    padding: 28px 20px;
+  }
+}
