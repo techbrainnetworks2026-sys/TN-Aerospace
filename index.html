@@ -2,32 +2,103 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <!-- Optimised favicon (32px, < 1KB) -->
+    <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#020617" />
 
-    <!-- Primary SEO Meta Tags -->
-    <title>TechBrain Networks Aerospace | Mission-Critical Aerospace Software & Defence Technology</title>
-    <meta name="title" content="TechBrain Networks Aerospace | Mission-Critical Aerospace Software & Defence Technology" />
+    <!-- ─── Critical Resource Hints ──────────────────────────────────────── -->
+    <!-- Preconnect for Google Fonts (used in @import fallback on older browsers) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Non-blocking Google Fonts: loads after HTML parse, display=swap prevents FOIT -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" />
+    </noscript>
+
+    <!-- Preload hero image (LCP element) — WebP, eager, high-priority -->
+    <link
+      rel="preload"
+      as="image"
+      href="/aerospace-background.webp"
+      type="image/webp"
+      fetchpriority="high"
+    />
+
+    <!-- ─── Primary SEO Meta Tags ──────────────────────────────────────── -->
+    <title>TechBrain Networks Aerospace | Mission-Critical Aerospace Software &amp; Defence Technology</title>
+    <meta name="title" content="TechBrain Networks Aerospace | Mission-Critical Aerospace Software &amp; Defence Technology" />
     <meta name="description" content="TechBrain Networks Aerospace delivers mission-critical software solutions for space exploration, defence systems, satellite communications, and aerospace technology. Precision-engineered for the cosmos." />
     <meta name="keywords" content="aerospace software, defence technology, satellite systems, space exploration, mission-critical software, aerospace engineering, TechBrain Networks" />
     <meta name="author" content="TechBrain Networks" />
     <meta name="robots" content="index, follow" />
     <meta name="language" content="English" />
-    <meta name="theme-color" content="#020617" />
+    <link rel="canonical" href="https://aerospace.techbrainnetworks.com/" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- ─── Open Graph / Facebook ───────────────────────────────────────── -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://aerospace.techbrainnetworks.com/" />
     <meta property="og:title" content="TechBrain Networks Aerospace | Mission-Critical Aerospace Software" />
     <meta property="og:description" content="Mission-critical aerospace software for the next generation of space exploration — engineered for precision, built for the cosmos." />
-    <meta property="og:image" content="/aerospace-background.jpeg" />
+    <meta property="og:image" content="https://aerospace.techbrainnetworks.com/aerospace-background.webp" />
 
-    <!-- Twitter Card -->
+    <!-- ─── Twitter Card ────────────────────────────────────────────────── -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://aerospace.techbrainnetworks.com/" />
     <meta name="twitter:title" content="TechBrain Networks Aerospace | Mission-Critical Aerospace Software" />
     <meta name="twitter:description" content="Mission-critical aerospace software for the next generation of space exploration — engineered for precision, built for the cosmos." />
-    <meta name="twitter:image" content="/aerospace-background.jpeg" />
+    <meta name="twitter:image" content="https://aerospace.techbrainnetworks.com/aerospace-background.webp" />
+
+    <!-- ─── JSON-LD Structured Data ────────────────────────────────────── -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "TechBrain Networks Aerospace",
+      "url": "https://aerospace.techbrainnetworks.com",
+      "logo": "https://aerospace.techbrainnetworks.com/favicon.svg",
+      "description": "Mission-critical aerospace software for the next generation of space exploration.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Thanjavur",
+        "addressRegion": "Tamil Nadu",
+        "postalCode": "614201",
+        "addressCountry": "IN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-8754906714",
+        "contactType": "customer service"
+      },
+      "sameAs": [
+        "https://aerospace.techbrainnetworks.com"
+      ]
+    }
+    </script>
+
+    <!-- ─── Critical Inline CSS (above-fold only) ───────────────────────── -->
+    <style>
+      /* Prevent FOUT / layout shift on initial paint */
+      html { scroll-behavior: smooth; font-size: 16px; }
+      body {
+        margin: 0;
+        background: #020617;
+        color: #fff;
+        font-family: system-ui, -apple-system, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      #root { min-height: 100vh; }
+      /* Prevent CLS from navbar */
+      nav { height: 72px; }
+    </style>
   </head>
   <body>
     <div id="root"></div>

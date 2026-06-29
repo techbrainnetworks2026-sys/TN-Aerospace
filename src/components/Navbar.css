@@ -86,6 +86,11 @@
   font-family: var(--f-head);
   position: relative;
   white-space: nowrap;
+  /* Button reset — now using <button> for keyboard nav */
+  background: transparent;
+  border: none;
+  display: inline-block;
+  text-align: left;
 }
 
 .navbar__nav-link:hover {

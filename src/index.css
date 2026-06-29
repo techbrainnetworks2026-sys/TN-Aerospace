@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+/* Fonts loaded via <link> in index.html with rel="preload" for performance.
+   This @import is a CSS-layer fallback only — browser resolves whichever comes first.
+   display=swap prevents invisible text during load (FOIT). */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap');
 
 /* ===================== RESET ===================== */
 *,
@@ -312,6 +315,51 @@ h3 {
   to {
     opacity: 1;
   }
+}
+
+/* ─── Accessibility: Respect user motion preferences ─────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Performance: GPU layer hints for animated elements ─────────────── */
+.hero__bg-img,
+.hero__orb,
+.pcard__container,
+.modal__progress-fill {
+  will-change: transform;
+}
+
+/* ─── Text rendering for headings ─────────────────────────────────────── */
+h1, h2, h3 {
+  text-rendering: optimizeLegibility;
+}
+
+/* ─── Focus visible — keyboard navigation ring ─────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--c-a2);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Screen reader only utility (global) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 /* ===================== RESPONSIVE (global only) ===================== */

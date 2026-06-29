@@ -1,40 +1,44 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef, memo } from 'react';
 import './ProductOverviewModal.css';
 import { products } from '../data/products';
 
-export default function ProductOverviewModal({ onClose }) {
+const DURATION_PER_SLIDE = 4000; // 4 seconds per slide
+
+// Memoized modal — heavy component, only mounts when user clicks "Watch Overview"
+const ProductOverviewModal = memo(function ProductOverviewModal({ onClose }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [progress, setProgress] = useState(0);
+  const startTimeRef = useRef(Date.now());
+  const rafRef = useRef(null);
 
-  const DURATION_PER_SLIDE = 4000; // 4 seconds per slide
-  const UPDATE_INTERVAL = 50; // update progress every 50ms
+  // Handle keyboard events
+  const handleKeyDown = useCallback((e) => {
+    if (e.key === 'Escape') onClose();
+    if (e.key === 'ArrowRight') handleNext();
+    if (e.key === 'ArrowLeft') handlePrev();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Handle closing on Escape key
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowRight') nextSlide();
-      if (e.key === 'ArrowLeft') prevSlide();
-    };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [handleKeyDown]);
 
-  const nextSlide = useCallback(() => {
-    setCurrentIndex((prev) => {
+  const handleNext = useCallback(() => {
+    setCurrentIndex(prev => {
       if (prev < products.length - 1) {
+        startTimeRef.current = Date.now();
         setProgress(0);
         return prev + 1;
-      } else {
-        onClose();
-        return prev;
       }
+      onClose();
+      return prev;
     });
   }, [onClose]);
 
-  const prevSlide = useCallback(() => {
-    setCurrentIndex((prev) => {
+  const handlePrev = useCallback(() => {
+    setCurrentIndex(prev => {
       if (prev > 0) {
+        startTimeRef.current = Date.now();
         setProgress(0);
         return prev - 1;
       }
@@ -42,35 +46,52 @@ export default function ProductOverviewModal({ onClose }) {
     });
   }, []);
 
-  // Handle auto-play progress
+  // Use requestAnimationFrame instead of setInterval for smooth progress
+  // This is more CPU-efficient and syncs with the browser's repaint cycle
   useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) return 100;
-        return prev + (100 / (DURATION_PER_SLIDE / UPDATE_INTERVAL));
-      });
-    }, UPDATE_INTERVAL);
-    return () => clearInterval(timer);
-  }, []);
+    startTimeRef.current = Date.now();
 
-  // Trigger next slide when progress hits 100
-  useEffect(() => {
-    if (progress >= 100) {
-      nextSlide();
-    }
-  }, [progress, nextSlide]);
+    const tick = () => {
+      const elapsed = Date.now() - startTimeRef.current;
+      const pct = Math.min((elapsed / DURATION_PER_SLIDE) * 100, 100);
+      setProgress(pct);
+
+      if (pct < 100) {
+        rafRef.current = requestAnimationFrame(tick);
+      } else {
+        handleNext();
+      }
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [currentIndex, handleNext]);
 
   const p = products[currentIndex];
 
   return (
-    <div className="modal__overlay">
+    <div
+      className="modal__overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Product overview: ${p.name}`}
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+    >
       <div className="modal__content">
-        <button className="modal__close" onClick={onClose}>✕</button>
+        <button
+          className="modal__close"
+          onClick={onClose}
+          aria-label="Close product overview"
+        >
+          ✕
+        </button>
 
         {/* Progress Bars (Like Instagram Stories) */}
-        <div className="modal__progress-container">
+        <div className="modal__progress-container" role="progressbar" aria-valuenow={currentIndex + 1} aria-valuemax={products.length} aria-label="Slide progress">
           {products.map((_, i) => (
-            <div key={i} className="modal__progress-bar">
+            <div key={i} className="modal__progress-bar" aria-hidden="true">
               <div
                 className="modal__progress-fill"
                 style={{
@@ -83,19 +104,27 @@ export default function ProductOverviewModal({ onClose }) {
 
         {/* Slide Content */}
         <div className="modal__slide">
-          <img className="modal__img" src={p.image} alt={p.name} />
-          <div className="modal__fade" />
-          
+          <img
+            className="modal__img"
+            src={p.image}
+            alt={p.name}
+            loading="lazy"
+            decoding="async"
+            width="800"
+            height="600"
+          />
+          <div className="modal__fade" aria-hidden="true" />
+
           <div className="modal__info">
-            <div className="modal__counter">Product {currentIndex + 1} of {products.length}</div>
+            <div className="modal__counter" aria-live="polite">Product {currentIndex + 1} of {products.length}</div>
             <div className="modal__badge" style={{ color: p.accentColor, borderColor: p.accentColor }}>{p.category}</div>
             <h2 className="modal__title">{p.name}</h2>
             <p className="modal__desc">{p.tagline}</p>
-            
-            <div className="modal__feats">
+
+            <div className="modal__feats" aria-label="Key features">
               {p.features.slice(0, 3).map((f, i) => (
                 <div key={i} className="modal__feat">
-                  <span className="modal__feat-bullet" style={{ color: p.accentColor }}>→</span> {f}
+                  <span className="modal__feat-bullet" style={{ color: p.accentColor }} aria-hidden="true">→</span> {f}
                 </div>
               ))}
             </div>
@@ -104,20 +133,34 @@ export default function ProductOverviewModal({ onClose }) {
 
         {/* Controls */}
         <div className="modal__controls">
-          <button className="modal__ctrl-btn" onClick={prevSlide} disabled={currentIndex === 0}>← Prev</button>
-          
-          <button className="modal__explore-btn btn btn-primary" onClick={() => {
-            onClose();
-            window.location.href = `/product/${p.slug}`;
-          }}>
+          <button
+            className="modal__ctrl-btn"
+            onClick={handlePrev}
+            disabled={currentIndex === 0}
+            aria-label="Previous product"
+          >
+            ← Prev
+          </button>
+
+          <button
+            className="modal__explore-btn btn btn-primary"
+            onClick={() => { onClose(); window.location.href = `/product/${p.slug}`; }}
+            aria-label={`Explore ${p.name} in detail`}
+          >
             Explore {p.name}
           </button>
 
-          <button className="modal__ctrl-btn" onClick={nextSlide}>
+          <button
+            className="modal__ctrl-btn"
+            onClick={handleNext}
+            aria-label={currentIndex === products.length - 1 ? 'Finish overview' : 'Next product'}
+          >
             {currentIndex === products.length - 1 ? 'Finish' : 'Next →'}
           </button>
         </div>
       </div>
     </div>
   );
-}
+});
+
+export default ProductOverviewModal;

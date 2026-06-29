@@ -31,7 +31,16 @@ export default function ProductDetailPage() {
   return (
     <>
       <div className="pdetail__hero-wrap">
-        <img className="pdetail__hero-img" src={product.image} alt={product.name} />
+        <img
+          className="pdetail__hero-img"
+          src={product.image}
+          alt={product.name}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          width="1920"
+          height="600"
+        />
         <div className="pdetail__hero-fade" />
         <div className="pdetail__hero-content">
           <button className="pdetail__back-btn btn btn-ghost" onClick={() => navigate('/')}>
@@ -91,6 +100,10 @@ export default function ProductDetailPage() {
                     className="pdetail__related-card-img"
                     src={p.image}
                     alt={p.name}
+                    loading="lazy"
+                    decoding="async"
+                    width="400"
+                    height="225"
                   />
                   <div className="pdetail__related-card-body">
                     <div className="pdetail__related-card-cat" style={{ color: p.accentColor }}>

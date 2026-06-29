@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import './CareersPage.css';
 import { careers as jobRoles } from '../data/careers';
-import heroBg from '../assets/careers-hero.png';
+
+// Use public WebP (132KB) instead of src/assets PNG (964KB bundled by Vite)
+const HERO_BG = '/careers-hero.webp';
 
 // SVG Icons for different roles
 const IconMap = {
@@ -79,7 +81,7 @@ export default function CareersPage() {
       <div 
         className="careers__header"
         style={{ 
-          backgroundImage: `linear-gradient(to bottom, rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 1)), url(${heroBg})`,
+          backgroundImage: `linear-gradient(to bottom, rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 1)), url(${HERO_BG})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
