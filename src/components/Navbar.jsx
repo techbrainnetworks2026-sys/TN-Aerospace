@@ -26,32 +26,52 @@ const Navbar = memo(function Navbar() {
   const toggleMenu = useCallback(() => setIsMenuOpen(prev => !prev), []);
 
   useEffect(() => {
-    // Only observe sections if on the home page
-    if (location.pathname !== '/') return;
+    // Sections live inside a lazy-loaded <Suspense> boundary.
+    // They are NOT in the DOM when this effect first runs.
+    // We poll until they appear, then attach the IntersectionObserver.
+
+    const SECTION_IDS = ['hero', 'products', 'careers', 'industries', 'services', 'about', 'contact'];
+    let observer = null;
+    let rafId = null;
+    let attempts = 0;
+    const MAX_ATTEMPTS = 40; // 40 × 50ms = 2 seconds max wait
 
     const handleScroll = () => {
       if (window.scrollY < 80) setActiveSection('hero');
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id);
-        });
-      },
-      { rootMargin: '-15% 0px -75% 0px', threshold: 0 }
-    );
+    const attachObserver = () => {
+      const sections = SECTION_IDS.map(id => document.getElementById(id)).filter(Boolean);
 
-    const sectionIds = ['hero', 'products', 'careers', 'industries', 'services', 'about', 'contact'];
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+      if (sections.length === 0 && attempts < MAX_ATTEMPTS) {
+        // Sections not rendered yet — retry in 50ms
+        attempts++;
+        rafId = setTimeout(attachObserver, 50);
+        return;
+      }
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) setActiveSection(entry.target.id);
+          });
+        },
+        { rootMargin: '-15% 0px -75% 0px', threshold: 0 }
+      );
+
+      sections.forEach((el) => observer.observe(el));
+    };
+
+    // Only track active section on the home page
+    if (location.pathname === '/') {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      attachObserver();
+    }
 
     return () => {
-      observer.disconnect();
       window.removeEventListener('scroll', handleScroll);
+      if (observer) observer.disconnect();
+      if (rafId) clearTimeout(rafId);
     };
   }, [location.pathname]);
 
